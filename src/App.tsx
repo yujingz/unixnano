@@ -27,16 +27,13 @@ function App() {
   });
 
   return (
-    <div className="App">
+    <div
+      className="App"
+      onClick={() => {
+        setPaused(!paused);
+      }}
+    >
       <div className="current-time-box">{paused ? lastTime : currentTime}</div>
-      <button
-        className="unix-button"
-        onClick={() => {
-          setPaused(!paused);
-        }}
-      >
-        {paused ? "Resume" : "Pause"}
-      </button>
     </div>
   );
 }
