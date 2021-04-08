@@ -1,46 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { usePrevious } from "./utils/hooks/use-previous";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
+import CountDown from './components/CountDown';
+import CurrentTime from "./components/CurrentTime";
 
-function App() {
-  const [paused, setPaused] = useState(false);
-  const [currentTime, setCurrentTime] = useState(getCurrentTime());
-  const lastTime = usePrevious(currentTime);
-
-  function getCurrentTime() {
-    var timeOrigin = performance.timeOrigin;
-    if (!timeOrigin) {
-      return "Your browser is not supported. Consider using Chrome, Firefox, Edge, or Opera";
-    } else {
-      return (performance.now() + performance.timeOrigin).toFixed(3);
-    }
-  }
-
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-
-    if (!paused) {
-      timer = setTimeout(() => {
-        setCurrentTime(getCurrentTime());
-      }, 10);
-    }
-    return () => {
-      if (timer) {
-        clearTimeout(timer);
-      }
-    };
-  });
-
+export default function App() {
   return (
-    <div
-      className="App"
-      onClick={() => {
-        setPaused(!paused);
-      }}
-    >
-      <div className="current-time-box">{paused ? lastTime : currentTime}</div>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <CurrentTime />
+        </Route>
+        <Route path="/count-down">
+          <CountDown />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
-
-export default App;
