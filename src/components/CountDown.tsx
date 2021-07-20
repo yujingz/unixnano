@@ -5,7 +5,7 @@ const total = 365 * 24 * 3600;
 
 export default function CountDown() {
   const [currentTime, setCurrentTime] = useState(+new Date()); // MS
-  const targetTime = new Date("2021-09-16T09:00:00");
+  const targetTime = new Date("2021-08-11T09:00:00");
 
   const delta = +targetTime / 1000 - +currentTime / 1000;
 
