@@ -18,6 +18,12 @@
   font-size: 8vw;
 }
 
+.current-time-box-days {
+  width: 80%;
+  color: #ff851b;
+  font-size: 4vw;
+}
+
 .unix-button {
   display: inline-block;
   cursor: pointer;
