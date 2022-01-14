@@ -5,7 +5,7 @@ import "../App.css";
 
 export default function CountDown() {
   const [currentTime, setCurrentTime] = useState(+new Date()); // MS
-  const targetTime = new Date("2021-08-11T09:00:00");
+  const targetTime = new Date("2022-01-25T09:00:00");
 
   const delta = +targetTime / 1000 - +currentTime / 1000;
 
