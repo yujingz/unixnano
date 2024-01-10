@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import "../App.css";
 
 // const total = 365 * 24 * 3600;
@@ -23,15 +23,17 @@ export default function CountDown() {
     };
   });
 
-  const days = (delta / (60 * 24 * 60))
-  const hours = (delta - Math.floor(days) * 3600 * 24) / 3600
-  const mins = (delta - Math.floor(days) * 3600 * 24 - Math.floor(hours) * 3600) / 60
+  const days = delta / (60 * 24 * 60);
+  const hours = (delta - Math.floor(days) * 3600 * 24) / 3600;
+  const mins =
+    (delta - Math.floor(days) * 3600 * 24 - Math.floor(hours) * 3600) / 60;
 
   return (
     <div className="App">
       <div className="current-time-box">{delta.toFixed(2)}</div>
       <div className="current-time-box-days">
-        {Math.floor(days)} days {Math.floor(hours)} hours {Math.floor(mins)} mins
+        {Math.floor(days)} days {Math.floor(hours)} hours {Math.floor(mins)}{" "}
+        mins
       </div>
     </div>
   );

@@ -1,20 +1,16 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+
 import "./App.css";
-import CountDown from './components/CountDown';
+import CountDown from "./components/CountDown";
 import CurrentTime from "./components/CurrentTime";
 
 export default function App() {
   return (
     <Router>
-      <Switch>
-        <Route exact path="/">
-          <CurrentTime />
-        </Route>
-        <Route path="/count-down">
-          <CountDown />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path="/" element={<CurrentTime />} />
+        <Route path="/count-down" element={<CountDown />} />
+      </Routes>
     </Router>
   );
 }
