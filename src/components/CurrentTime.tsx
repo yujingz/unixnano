@@ -11,7 +11,7 @@ export default function CurrentTime() {
     if (!timeOrigin) {
       return 'Your browser is not supported. Consider using Chrome, Firefox, Edge, or Opera';
     } else {
-      return (performance.now() + performance.timeOrigin).toFixed(3);
+      return (performance.now() + performance.timeOrigin).toFixed(1);
     }
   }
 
