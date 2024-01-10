@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
-import "../App.css";
 // import { usePrevious } from "../utils/hooks/use-previous";
-import { usePrevious } from "ahooks";
+import { usePrevious } from 'ahooks';
+import { useEffect, useState } from 'react';
+
+import '../App.css';
 
 export default function CurrentTime() {
   const [paused, setPaused] = useState(false);
@@ -11,7 +12,7 @@ export default function CurrentTime() {
   function getCurrentTime() {
     const timeOrigin = performance.timeOrigin;
     if (!timeOrigin) {
-      return "Your browser is not supported. Consider using Chrome, Firefox, Edge, or Opera";
+      return 'Your browser is not supported. Consider using Chrome, Firefox, Edge, or Opera';
     } else {
       return (performance.now() + performance.timeOrigin).toFixed(3);
     }
