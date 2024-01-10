@@ -2,7 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import CountDown from './components/CountDown';
 import CurrentTime from './components/CurrentTime';
-import './styles/App.css';
+import './styles/index.css';
 
 export default function App() {
   return (

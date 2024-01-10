@@ -1,8 +1,5 @@
-// import { usePrevious } from "../utils/hooks/use-previous";
 import { usePrevious } from 'ahooks';
 import { useEffect, useState } from 'react';
-
-import '../App.css';
 
 export default function CurrentTime() {
   const [paused, setPaused] = useState(false);
@@ -35,12 +32,12 @@ export default function CurrentTime() {
 
   return (
     <div
-      className="App"
+      className="h-screen bg-slate-800 flex items-center justify-center"
       onClick={() => {
         setPaused(!paused);
       }}
     >
-      <div className="current-time-box">{paused ? lastTime : currentTime}</div>
+      <div className="font-mono text-center font-black text-8xl text-amber-500">{paused ? lastTime : currentTime}</div>
     </div>
   );
 }

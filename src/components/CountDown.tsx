@@ -1,9 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import '../App.css';
-
-// const total = 365 * 24 * 3600;
-
 export default function CountDown() {
   const [currentTime, setCurrentTime] = useState(+new Date()); // MS
   const targetTime = new Date('2022-01-25T09:00:00');
