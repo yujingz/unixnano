@@ -7,9 +7,7 @@ export default function CountDown() {
   const delta = +targetTime / 1000 - +currentTime / 1000;
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
-
-    timer = setTimeout(() => {
+    const timer = setTimeout(() => {
       setCurrentTime(+new Date());
     }, 10);
 

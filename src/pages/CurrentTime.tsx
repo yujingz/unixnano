@@ -1,4 +1,4 @@
-import { usePrevious } from 'ahooks';
+import { useKeyPress, usePrevious } from 'ahooks';
 import { useEffect, useState } from 'react';
 
 export default function CurrentTime() {
@@ -14,6 +14,10 @@ export default function CurrentTime() {
       return (performance.now() + performance.timeOrigin).toFixed(1);
     }
   }
+
+  useKeyPress('space', () => {
+    setPaused(!paused);
+  });
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -37,7 +41,9 @@ export default function CurrentTime() {
         setPaused(!paused);
       }}
     >
-      <div className="font-mono text-center font-black text-8xl text-amber-500">{paused ? lastTime : currentTime}</div>
+      <div className="font-mono text-center font-black text-8xl xl:text-9xl text-amber-500">
+        {paused ? lastTime : currentTime}
+      </div>
     </div>
   );
 }
