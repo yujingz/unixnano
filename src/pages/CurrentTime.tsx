@@ -11,7 +11,10 @@ export default function CurrentTime() {
     if (!timeOrigin) {
       return 'Your browser is not supported. Consider using Chrome, Firefox, Edge, or Opera';
     } else {
-      return (performance.now() + performance.timeOrigin).toFixed(1);
+      const time = performance.now() + performance.timeOrigin;
+      const seconds = Math.floor(time / 1000);
+      const milliseconds = Math.floor(time % 1000);
+      return `${seconds}.${milliseconds.toString().padStart(3, '0')}`;
     }
   }
 
