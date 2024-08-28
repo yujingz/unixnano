@@ -1,5 +1,6 @@
 import { useKeyPress, usePrevious } from 'ahooks';
 import { useEffect, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 export default function CurrentTime() {
   const [paused, setPaused] = useState(false);
@@ -37,14 +38,21 @@ export default function CurrentTime() {
     };
   });
 
+  const isLandscape = useMediaQuery({ query: '(orientation: landscape)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+
   return (
     <div
-      className="h-screen bg-slate-800 flex items-center justify-center"
+      className="h-screen bg-slate-800 flex items-center justify-center p-4"
       onClick={() => {
         setPaused(!paused);
       }}
     >
-      <div className="font-mono text-center font-black text-8xl xl:text-9xl text-amber-500">
+      <div
+        className={`font-mono text-center font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-amber-500 break-all ${
+          isMobile && isLandscape ? 'writing-vertical-rl' : ''
+        }`}
+      >
         {paused ? lastTime : currentTime}
       </div>
     </div>
