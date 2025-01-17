@@ -13,9 +13,9 @@ export default function CurrentTime() {
       return 'Your browser is not supported. Consider using Chrome, Firefox, Edge, or Opera';
     } else {
       const time = performance.now() + performance.timeOrigin;
-      const seconds = Math.floor(time / 1000);
-      const milliseconds = Math.floor(time % 1000);
-      return `${seconds}.${milliseconds.toString().padStart(3, '0')}`;
+      const nanoseconds = Math.floor(time * 1_000_000);
+      const nanosString = nanoseconds.toString();
+      return nanosString.slice(0, -9) + '.' + nanosString.slice(-9);
     }
   }
 
@@ -49,7 +49,7 @@ export default function CurrentTime() {
       }}
     >
       <div
-        className={`font-mono text-center font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-amber-500 break-all ${
+        className={`font-mono text-center font-black text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-amber-500 break-all ${
           isMobile && isLandscape ? 'writing-vertical-rl' : ''
         }`}
       >
