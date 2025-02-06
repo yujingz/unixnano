@@ -1,4 +1,3 @@
-import { useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
 
 const DISTANCES = [
@@ -16,31 +15,6 @@ const MARATHON_GOALS = {
 } as const;
 
 export function Pace() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setStartX(e.touches[0].pageX - (scrollRef.current?.offsetLeft || 0));
-    setScrollLeft(scrollRef.current?.scrollLeft || 0);
-    setIsDragging(true);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.touches[0].pageX - (scrollRef.current?.offsetLeft || 0);
-    const walk = (x - startX) * 2;
-    if (scrollRef.current) {
-      scrollRef.current.scrollLeft = scrollLeft - walk;
-    }
-  };
-
-  const handleTouchEnd = () => {
-    setIsDragging(false);
-  };
-
   const padZero = (num: number) => num.toString().padStart(2, '0');
 
   const generatePaces = () => {
@@ -96,24 +70,16 @@ export function Pace() {
         <h1 className="text-2xl font-bold text-center mb-6">Pace Calculator</h1>
         <div className="text-center mb-4 text-sm">
           <p>Special paces for marathon goals:</p>
-          <p className="text-xs md:text-sm whitespace-nowrap overflow-x-auto py-2">
-            Sub 3:00 (4:15 min/km) | Sub 3:30 (4:58 min/km) | Sub 4:00 (5:41 min/km) | Sub 4:30 (6:23 min/km)
-          </p>
+          <p>Sub 3:00 (4:15 min/km) | Sub 3:30 (4:58 min/km) | Sub 4:00 (5:41 min/km) | Sub 4:30 (6:23 min/km)</p>
         </div>
-        <div
-          ref={scrollRef}
-          className="w-full overflow-x-auto touch-pan-x"
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
-          <div className="max-w-7xl mx-auto min-w-[640px]">
+        <div className="w-full overflow-x-auto">
+          <div className="max-w-7xl mx-auto">
             <table className="min-w-full border-collapse">
               <thead>
                 <tr className="bg-gray-100">
-                  <th className="border p-2 sticky left-0 bg-gray-100 z-10">Pace (min/km)</th>
+                  <th className="border p-2">Pace (min/km)</th>
                   {DISTANCES.map((distance) => (
-                    <th key={distance.name} className="border p-2 whitespace-nowrap">
+                    <th key={distance.name} className="border p-2">
                       {distance.name}
                     </th>
                   ))}
@@ -122,7 +88,7 @@ export function Pace() {
               <tbody>
                 {generatePaces().map((pace) => (
                   <tr key={pace} className={`hover:bg-gray-50 ${isGoalPace(pace) ? 'bg-blue-50 font-semibold' : ''}`}>
-                    <td className="border p-2 font-medium sticky left-0 bg-white z-10">{formatPace(pace)}</td>
+                    <td className="border p-2 font-medium">{formatPace(pace)}</td>
                     {DISTANCES.map((distance) => (
                       <td
                         key={`${pace}-${distance.name}`}
@@ -137,7 +103,6 @@ export function Pace() {
             </table>
           </div>
         </div>
-        <div className="text-center text-xs text-gray-500 mt-4 md:hidden">Swipe left/right to view more</div>
       </div>
     </>
   );
