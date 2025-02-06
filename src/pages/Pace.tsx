@@ -25,7 +25,7 @@ export function Pace() {
   };
 
   const isGoalPace = (pace: number) => {
-    return Object.values(MARATHON_GOALS).includes(pace);
+    return (Object.values(MARATHON_GOALS) as number[]).includes(pace);
   };
 
   const formatPace = (seconds: number) => {
