@@ -24,7 +24,7 @@ export default function CurrentTime() {
   });
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
+    let timer: ReturnType<typeof setTimeout>;
 
     if (!paused) {
       timer = setTimeout(() => {
