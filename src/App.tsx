@@ -1,4 +1,4 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router';
 
 import CountDown from './pages/CountDown';
 import CurrentTime from './pages/CurrentTime';
