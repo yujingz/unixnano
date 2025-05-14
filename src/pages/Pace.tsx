@@ -49,24 +49,63 @@ export function Pace() {
   return (
     <>
       <Helmet>
-        <title>跑步配速计算器 | Running Pace Calculator for Marathon, Half Marathon, 10K, 5K</title>
+        <title>Running Pace Calculator | Marathon, Half Marathon, 10K, 5K Times & Paces</title>
         <meta
           name="description"
-          content="跑步配速计算器，轻松计算全马、半马、10公里、5公里所需时间。Running pace calculator for Marathon, Half Marathon, 10K and 5K races. 包含详细配速表格"
+          content="Free running pace calculator with comprehensive pace charts for marathons, half marathons, 10K and 5K races. Calculate your target times with specific goal paces including sub-3:00, 3:30, 4:00, and 4:30 marathon times."
         />
         <meta
           name="keywords"
-          content="配速,半马,全马,pace calculator,half marathon,marathon,5k,10k,配速表格,跑步计算器"
+          content="running pace calculator, marathon pace chart, half marathon calculator, 10K pace, 5K time calculator, race pace, min/km calculator, sub 3 marathon pace, running pace conversion"
         />
+        <meta name="author" content="unixnano.com" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
+        <meta name="language" content="English, Chinese" />
+
         {/* Open Graph tags for social sharing */}
-        <meta property="og:title" content="跑步配速计算器 | Running Pace Calculator" />
+        <meta property="og:title" content="Running Pace Calculator | Marathon, Half Marathon, 10K, 5K" />
         <meta
           property="og:description"
-          content="轻松计算全马、半马、10公里、5公里所需时间。Calculate your race times for Marathon, Half Marathon, 10K and 5K."
+          content="Calculate your exact race times for different paces. Includes special pace charts for sub-3:00, 3:30, 4:00 and 4:30 marathon goals."
         />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://unixnano.com/pace" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:locale:alternate" content="zh_CN" />
+
+        {/* Twitter Card data */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Running Pace Calculator | Marathon, Half Marathon, 10K, 5K" />
+        <meta
+          name="twitter:description"
+          content="Interactive pace calculator for runners. Find your perfect pace for any race distance."
+        />
+
+        {/* Structured data for rich results */}
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Running Pace Calculator",
+            "description": "Calculate running pace and finish times for various race distances",
+            "applicationCategory": "SportsApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "featureList": ["Marathon pace calculation", "Half marathon pace calculation", "10K pace calculation", "5K pace calculation", "Goal pace guides"]
+          }
+        `}</script>
       </Helmet>
       <div className="p-4">
+        <div className="absolute top-2 right-4 text-gray-600 text-sm">
+          <a href="mailto:feedback@unixnano.com" className="hover:text-gray-900">
+            Feedbacks? feedback@unixnano.com
+          </a>
+        </div>
         <h1 className="text-2xl font-bold text-center mb-6">Pace Calculator</h1>
         <div className="text-center mb-4 text-sm">
           <p>Special paces for marathon goals:</p>
